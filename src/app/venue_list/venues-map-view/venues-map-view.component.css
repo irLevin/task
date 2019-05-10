@@ -1,0 +1,50 @@
+agm-map {
+    height: 600px;
+}
+
+.map_venue {
+    float: right;
+    margin-top: 72px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.venues {
+    display: inline-block;
+}
+
+.table-item {
+    width: 100% !important;
+}
+
+::ng-deep .cdk-overlay-container {
+    width: 50%;
+}
+
+.venues {
+    padding: 0;
+}
+
+@media(max-width: 600px) {
+    agm-map {
+        height: 250px;
+    }
+    .map_venue {
+        margin-top: 20px;
+    }
+     ::ng-deep .cdk-overlay-container {
+        width: 100%;
+    }
+     ::ng-deep .cdk-overlay-backdrop {
+        z-index: -100000;
+        pointer-events: all;
+        opacity: 0;
+        height: 0;
+        widows: 0;
+    }
+     ::ng-deep .cdk-global-overlay-wrapper {
+        margin-top: 175px;
+    }
+}

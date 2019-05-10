@@ -1,0 +1,19 @@
+<h2>Map View</h2>
+<div class="map_venue col-md-6 col-md-push-6">
+    <agm-map [latitude]="+lat" [longitude]="+lng" [zoom]="zoom!=null ? zoom : 10" [mapDraggable]="true">
+        <agm-marker *ngFor="let location of venues_location_data" [id]="location.id" [latitude]="location.lat" [longitude]="location.lng" [iconUrl]='{
+        "url":  location.img, 
+        "scaledSize": {
+            "height": iconSizeY, 
+            "width": iconSizeX
+        }
+      }'>
+            <agm-info-window [isOpen]="venueSelected">
+                <strong>{{location.name}}</strong>
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+</div>
+<div class="col-md-6 venues col-md-pull-4">
+    <venues-list [isTableView]="false" (valueUpdate)="getUpdatedvalue($event)" (mapMarkerHighlight)="highlightMark($event)"></venues-list>
+</div>

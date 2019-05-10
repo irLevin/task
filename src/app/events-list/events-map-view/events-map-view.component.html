@@ -1,0 +1,21 @@
+  <agm-map [latitude]="+lat" [longitude]="+lng" [zoom]="zoom!=null ? zoom : 10" [mapDraggable]="true">
+      <agm-marker [id]="id" [latitude]="+lat" [longitude]="+lng" [iconUrl]='{
+        "url": iconPath, 
+        "scaledSize": {
+            "height": iconSizeY, 
+            "width": iconSizeX
+        }
+      }'>
+    </agm-marker>
+    <agm-marker *ngFor="let location of markersArr" [id]="location.id" [latitude]="location.lat" [longitude]="location.lng" [iconUrl]='{
+        "url": iconEvent, 
+        "scaledSize": {
+            "height": iconSizeY, 
+            "width": iconSizeX
+        }
+      }'>
+      <agm-info-window [isOpen]="venueSelected">
+        <strong>{{location.title}}</strong>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>

@@ -1,0 +1,88 @@
+.hide {
+    display: none;
+}
+
+h3 {
+    text-align: center;
+    padding: 25px;
+}
+
+.mat-table {
+    overflow: auto;
+}
+
+mat-footer-row mat-footer-cell {
+    justify-content: center;
+    font-style: italic;
+}
+
+mat-header-row {
+    background: #000;
+}
+
+.mat-header-cell {
+    color: #fff !important;
+    font-size: 16px;
+}
+
+.mat-cell {
+    padding-right: 24px;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.mat-column-title {
+    max-width: 220px;
+}
+
+.cdk-column-distance {
+    max-width: 150px;
+}
+
+.single-date {
+    padding-right: 5px;
+}
+
+.mat-column-startdate {
+    max-width: 400px;
+    ;
+}
+
+.table-item {
+    float: left;
+}
+
+::ng-deep .card-header {
+    padding: 0 !important;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.map-events {
+    float: right;
+}
+
+::ng-deep .btn-link {
+    padding: 0;
+    text-align: left;
+    word-break: break-all;
+}
+
+::ng-deep .card {
+    border: 0;
+}
+
+::ng-deep .card-body {
+    padding: 0;
+}
+
+@media(max-width: 600px) {
+    .mat-column-startdate {
+        max-height: 110px;
+        overflow: auto;
+    }
+    .cdk-column-distance {
+        max-width: 90px;
+    }
+}

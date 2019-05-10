@@ -1,0 +1,11 @@
+<h2 mat-dialog-title fxLayoutAlign="space-around center">Venue Details</h2>
+<section mat-dialog-content>
+    <h2 class="venueTitle">{{name}}</h2>
+    <venue-img-carousel [images]="pictures"></venue-img-carousel>
+    <div class="venueAddress">Address: {{address}}</div>
+    <a class="venueLink" href="{{urls}}">{{urls}}</a>
+</section>
+<div mat-dialog-actions fxLayoutAlign="space-around center">
+    <button class="closeBtn" mat-dialog-close md-raised-button (click)="closeModalWin()">Close</button>
+    <button class="showEvents" (click)="eventsOpen(data)">Events Around</button>
+</div>

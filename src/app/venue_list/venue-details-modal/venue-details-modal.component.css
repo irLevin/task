@@ -1,0 +1,39 @@
+.mat-dialog-actions {
+    display: block;
+}
+
+.showEvents {
+    float: right;
+    background: #000;
+    color: #fff;
+    height: 40px;
+}
+
+button {
+    height: 40px;
+}
+
+@media(max-width: 600px) {
+    .mat-dialog-title {
+        display: none;
+    }
+    .venueTitle {
+        font-size: 20px;
+    }
+    .showEvents {
+        height: auto;
+        padding: 10px;
+        border: none;
+    }
+    .closeBtn {
+        padding: 8px;
+        height: auto;
+    }
+    .mat-dialog-actions {
+        padding: 25px 0 0;
+        margin-bottom: 0;
+    }
+    .venueLink {
+        font-size: 14px;
+    }
+}

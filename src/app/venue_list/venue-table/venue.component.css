@@ -1,0 +1,103 @@
+.hide {
+    display: none;
+}
+
+
+/**mat table style**/
+
+.mat-table {
+    overflow: auto;
+}
+
+mat-footer-row mat-footer-cell {
+    justify-content: center;
+    font-style: italic;
+}
+
+mat-header-row {
+    background: #000;
+}
+
+.mat-header-cell {
+    color: #fff !important;
+    font-size: 16px;
+}
+
+.mat-cell {
+    padding-right: 24px;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.table-item {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin: 0 auto 5%;
+}
+
+.mat-column-location-city {
+    text-transform: capitalize;
+}
+
+.mat-form-field {
+    padding-left: 8%;
+}
+
+::ng-deep .mat-sort-header-arrow,
+.mat-sort-header-stem,
+.mat-sort-header-indicator {
+    color: #fff !important;
+}
+
+.filterFields {
+    margin: auto;
+}
+
+.mobile-label {
+    display: none;
+}
+
+@media(max-width: 600px) {
+    .mobile-label {
+        width: 80px;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .mat-header-row {
+        display: none;
+    }
+    .mat-row {
+        flex-direction: column;
+        align-items: start;
+        padding: 8px 5px;
+    }
+    .table-item {
+        max-height: 500px;
+        overflow: auto;
+    }
+     ::ng-deep.mat-paginator-container {
+        bottom: 20px;
+        padding: 0 !important;
+        justify-content: center !important;
+        background: #fff;
+        left: 0;
+    }
+    .mat-cell {
+        padding-right: 0;
+    }
+    mat-cell:first-of-type,
+    mat-footer-cell:first-of-type,
+    mat-header-cell:first-of-type {
+        padding-left: 0;
+    }
+    .mat-form-field {
+        display: contents;
+    }
+    .mview {
+        margin-bottom: 20px;
+    }
+}

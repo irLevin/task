@@ -1,0 +1,69 @@
+<h3>{{errorMsg}}</h3>
+<div class="filterFields" [ngClass]="{' col-md-9': isTableView, ' col-md-12' : !isTableView}">
+    <button type="button" class="btn btn-primary left mview" (click)="routeToMap()" [ngClass]="{'hide':!isTableView}">
+                Map View
+        </button>
+    <mat-form-field class="col-xs-12" [ngClass]="{' col-md-5': isTableView, ' col-md-5' : !isTableView}">
+        <mat-select placeholder="Cities" [formControl]="cityFilter" multiple>
+            <mat-option *ngFor="let city of citiesArray" [value]="city">{{city}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-xs-12" [ngClass]="{' col-md-5': isTableView, ' col-md-7' : !isTableView}">
+        <input matInput class="form-field" [formControl]="nameFilter" placeholder="Name, ZipCode, Stard Date ('10-10-2000') Filter">
+    </mat-form-field>
+</div>
+<div class="table-item col-xs-12 mat-elevation-z8" [ngClass]="{' col-md-9': isTableView, ' col-md-12' : !isTableView}">
+    <table mat-table [dataSource]="listVenuesData" class="mat-table col-md-12" matSort>
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Name:</span> {{element.title}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="location.city">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">City:</span> {{element.location.city.toLowerCase()}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="location.zipcode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Postcode</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Postcode:</span> {{element.location.zipcode}}
+
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="location.adress">
+            <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Address:</span> {{element.location.adress}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dates.startdate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Start Date</span> {{element.dates.startdate!=null ? element.dates.startdate:"Date is not provided"}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="details">
+            <mat-header-cell *matHeaderCellDef>More Details</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">More Details</span>
+                <button mat-icon-button id="{{element.trcid}}" (click)="openDetailsModal(element.trcid)">
+                                        <mat-icon>launch</mat-icon>
+                                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                Please wait, data is loading...
+            </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listVenuesData!=null}">
+        </mat-footer-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+    <mat-paginator [pageSizeOptions]="[15, 30, 50]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,67 @@
+<h3>{{errorMsg}}</h3>
+<div class="filterFields" class="col-md-6" [ngClass]="{'hide':isHidden}">
+    <mat-form-field class="col-md-4">
+        <input matInput class="form-field" [formControl]="nameFilter" placeholder="Event Name">
+    </mat-form-field>
+    <mat-form-field class="col-md-4">
+        <mat-select placeholder="Year" [formControl]="yearFilter" multiple>
+            <mat-option *ngFor="let year of yearArray" [value]="year">{{year}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-md-4">
+        <mat-select placeholder="Month" [formControl]="monthFilter" multiple>
+            <mat-option *ngFor="let month of monthArray" [value]="month">{{month}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="col-xs-12 col-md-6 map-events col-md-push-6" *ngIf="listEventsToDisplay!== undefined">
+    <events-map-view [eventsToShow]="listEventsToDisplay!== undefined ? listEventsToDisplay.data : null" [currentvenue]="current_venue"></events-map-view>
+</div>
+<div class="table-item col-xs-12 col-md-6 col-md-pull-4" [ngClass]="{'hide':isHidden}">
+    <table mat-table [dataSource]="listEventsToDisplay" class="mat-elevation-z8 col-md-12" matSort matSortActive="distance" matSortDirection="asc">
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <ngb-accordion #acc="ngbAccordion" activeIds="{{element.id}}">
+                    <ngb-panel title="{{element.title}}">
+                        <ng-template ngbPanelContent>
+                            {{element.description}}
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="startdate">
+            <mat-header-cell *matHeaderCellDef>Start Date</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div class="dates-range" *ngIf='!isString(element.startdate); else content'>
+                    <ng-container *ngFor="let d of element.startdate">
+                        <span class="single-date">
+                            {{d}}
+                        </span>
+                    </ng-container>
+                </div>
+                <ng-template #content>
+                    <span class="single-date">{{element.startdate}}</span>
+                </ng-template>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="distance">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Distance (meters)</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.distance}}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                Please wait, data is loading...
+            </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listEventsToDisplay!=null}">
+        </mat-footer-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[15, 30, 50]" showFirstLastButtons></mat-paginator>
+</div>
