@@ -1,3 +1,35 @@
+**Hello**
+Thank you so much for this opportunity to build such a small app. I liked this task:)
+I have finished current homework. This application contains three modules according to the main task and two bonuses tasks.
+I didn't upload folder "node_modules" to this repository, all others files are.
+The application can be launch by nmp command "ng serve -o"
+
+**Home page**
+When the application is launched, you will see a table view of venues with filters option. On top of the page, there is a button "Map View" which is responsible for switch between two modes (table and map).
+In the column "More details" you can click on icon related to each row in the table (venue) in order to receive more details (modal window)
+
+**Modal window**
+In this modal window you can see one more button "Events Around" by clicking on it you will be redirected to events page which contains events table related to the selected venue, if there are no available events in the radius <1 km, a suitable message will be shown. All events are ordered in ascending order by distance. 
+
+**Map view venues**
+In the main page after clicking on the button "Map View", you will be redirected to "map-view" page. This page contains a list of venues and their location on the page. All map markers also can be filtered according to selected filters values. The "events" page can be achieved from the same modal window (described above).
+
+**Events**
+This page presents a list of events in radius <1 km for the selected venue. All events markers can be filtered according to applied filters. 
+
+**General Notes**
+Source of icons may be found in the "assets" folder.
+
+Thank you!!!!
+
+
+
+
+
+
+
+
+
 # Taskapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
